@@ -2,7 +2,7 @@ import React from 'react';
 import './components.css';
 
 const FixtureItems = (props) => {
-    console.log("Fixture_items");
+    console.log("FixtureItems");
     const item_data = props.fixture_item;
     return (
         <div className="fixture_item_container">
@@ -25,28 +25,5 @@ const logo = {
     width: "100%",
     height: "100%"
 }
-
-/*
-const body_container = {
-    border: "1px solid black",
-    float: "left",
-    display: "inline-block"
-}
-
-const left_container = {
-    border: "1px solid green",
-    width: "10%"
-}
-
-const middle_container = {
-    border: "1px solid red",
-    width: "80%"
-}
-
-const right_container = {
-    border: "1px solid green",
-    width: "10%"
-}*/
-
 
 export default FixtureItems;

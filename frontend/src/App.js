@@ -9,26 +9,8 @@ const ENDPOINT = "http://localhost:5000"
 // Get Match Fixtures
 const getMatchFixture = async () => {
   console.log("getFixtureData");
-  let finishedMatch = [];
-  let upcomingMatch = [];
-  let match = {};
   const endpoint = `${ENDPOINT}/prevMatchFixture`
-  const fixture = await axios.get(endpoint).then(res => {return res.data});
-  for (let [key, value] of Object.entries(fixture)) {
-    let date = new Date(value.matchDate);
-    let minutes = (date.getMinutes().toString() === "0") ? "00": date.getMinutes().toString();
-    let matchDate = date.getDate().toString() + "-" + (date.getMonth()+1).toString() + "-" + date.getFullYear() + " " + date.getHours().toString() + ":" + minutes;
-    value.matchDate = matchDate;
-    if (value.status === "Match Finished") {
-      finishedMatch.push(value);
-    } else if (value.status !== "Match Postponed") {
-      value.score.fulltime = "--";
-      upcomingMatch.push(value);
-    }
-  }
-  match["FinishedMatch"] = finishedMatch;
-  match["UpcomingMatch"] = upcomingMatch;
-  return match;
+  return await axios.get(endpoint).then(res => {return res.data});
 }
 
 class App extends React.Component {
